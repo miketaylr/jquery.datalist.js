@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jquery.datalist.js test page</title>
+  <style>
+    datalist {display:none;} /* just in case */
+    h1 {font: bold 24px Helvetica, fantasy;}
+    ul {margin:0;padding:0;list-style:none;}
+    ul span.label {float:right;}
+  </style>
+  <script src="jquery.js"></script>
+  <script src="jquery.datalist.js"></script>
+</head>
+<body>
+  <h1>jQuery Datalist Plugin</h1>
+  <form>
+    <input type="search" list="suggestions">
+    <datalist id="suggestions">
+      <option label="DM" value="Depeche Mode"></option>
+      <option label="Moz" value="Morrissey"></option>
+      <option label="NO" value="New Order"></option>
+      <option label="TC" value="The Cure"></option>
+    </datalist>
+    
+    <ul id="test"></ul>
+  </form>
+  <script>
+    $(document).ready(function(){
+      $('input[list]').datalist();
+    });
+  </script>
+</body>
+</html>
