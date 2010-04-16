@@ -32,30 +32,32 @@ $.fn.datalist = function(options) {
   return ((typeof this[0].list === 'object' ) && this[0].list !== undefined) ? this : this.each(function() {
     
     //local vars
-    var $this = $(this);
+    var $this = $(this); //the input with the list attr
     //width for dynamic ul creation
     var width = $this.width();
-    var ul = $("<ul>").css("width", width);
+    var ul = $("<ul>", {"class": "datalist", "width": width});
     var datalistRef = $this.attr('list');
     var datalist = $('#'+datalistRef);
     var opts = datalist.find('option');
     var wrapper = $('<div>').css('position', 'relative');
+    var webkit = (function() {return $.browser.webkit;})();
     
-    $('#test').css('width', width);
-    
-    //return if matching datalist isn't found
-    if (datalist.length) {
+    //return this if matching datalist isn't found
+    //to be polite if there's any chaining
+    if (!datalist.length) {
+        return this;
+    } else {
       var lis = opts.each(function(i, opt) {
         $('<li>')
           .append('<span class="value">'+opt.value+'</span>')
           .append('<span class="label">'+opt.label+'</span>')
           .appendTo(ul);
-      }); 
-    } else {return this;}
+      });
+    };
     
     //stick the stuff in
     $this.wrap(wrapper);
-    ul.css('display', 'none').insertAfter($this);
+    ul.hide().insertAfter($this);
     
     $this.focus(function(){
       ul.show();
@@ -67,7 +69,7 @@ $.fn.datalist = function(options) {
     
     //need to update value
     
-    console.log(ul);
+    console.log(ul, datalist, opts);
     //get reference to matching datalist √
     //die silently if not found √
     //create ul
