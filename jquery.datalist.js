@@ -42,6 +42,7 @@ $.fn.datalist = function() {
     if (!datalist.length) {
         return this;
     } else {
+    //otherwise, build the structure
       opts.each(function(i, opt) {
         $('<li>')
           .append('<span class="value">'+opt.value+'</span>')
@@ -50,26 +51,25 @@ $.fn.datalist = function() {
       });
     };
     
-    //stick the stuff in
+    //stick the stuff in and hide it
     $this.wrap(wrapper);
-    
     ul.hide().insertAfter($this);
     
+    //show it on focus
     $this.focus(function(){
       ul.show(); 
     });
     
+    //hide it on blur
     $this.blur(function(){
       ul.hide();
     });
     
+    //set value of input to clicked option
     var lis = $this.next().find('li');
     lis.mousedown(function(){
       var value = $(this).find('span.value').text();
       $this.val(value); 
     });
-    
-    //make it modular and prettay
-    
   });
 };
