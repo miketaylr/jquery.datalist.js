@@ -12,12 +12,14 @@
 /* 
 <input type="search" autofocus list="suggestions">
 <datalist id="suggestions">
-  <select>
-    <option label="DM" value="Depeche Mode"></option>
-    <option label="Moz" value="Morrissey"></option>
-    <option label="NO" value="New Order"></option>
-    <option label="TC" value="The Cure"></option>
-  </select>
+  <!--[if !IE]><!-->
+  <select><!--<![endif]-->
+    <option label="DM" value="Depeche Mode">
+    <option label="Moz" value="Morrissey">
+    <option label="NO" value="New Order">
+    <option label="TC" value="The Cure">
+  <!--[if !IE]><!-->
+  </select><!--<![endif]-->
 </datalist>
 */
 
@@ -25,7 +27,6 @@ $.fn.datalist = function() {
   
   //first test for native placeholder support before continuing
   return ((typeof this[0].list === 'object' ) && this[0].list !== undefined) ? this : this.each(function() {
-    
     //local vars
     var $this = $(this),
         //the main guts of the plugin
@@ -34,9 +35,10 @@ $.fn.datalist = function() {
         
         //wrapper stuffs
         width = $this.width(),
-        ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute'}}),
+        height = $this.height(),
+        ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute', 'left': 0, 'top': height + 6}}),
         wrapper = $('<div>').css('position', 'relative');
-    
+        
     //return this if matching datalist isn't found
     //to be polite if there's any chaining
     if (!datalist.length) {
