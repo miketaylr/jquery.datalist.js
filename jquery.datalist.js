@@ -12,10 +12,12 @@
 /* 
 <input type="search" autofocus list="suggestions">
 <datalist id="suggestions">
-  <option label="DM" value="Depeche Mode"></option>
-  <option label="Moz" value="Morrissey"></option>
-  <option label="NO" value="New Order"></option>
-  <option label="TC" value="The Cure"></option>
+  <select>
+    <option label="DM" value="Depeche Mode"></option>
+    <option label="Moz" value="Morrissey"></option>
+    <option label="NO" value="New Order"></option>
+    <option label="TC" value="The Cure"></option>
+  </select>
 </datalist>
 */
 
@@ -32,22 +34,20 @@ $.fn.datalist = function(options) {
   return ((typeof this[0].list === 'object' ) && this[0].list !== undefined) ? this : this.each(function() {
     
     //local vars
-    var $this = $(this); //the input with the list attr
-    //width for dynamic ul creation
-    var width = $this.width();
-    var ul = $("<ul>", {"class": "datalist", "width": width});
-    var datalistRef = $this.attr('list');
-    var datalist = $('#'+datalistRef);
-    var opts = datalist.find('option');
-    var wrapper = $('<div>').css('position', 'relative');
-    var webkit = (function() {return $.browser.webkit;})();
+    var $this = $(this),
+        width = $this.width(),
+        ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute'}}),
+        datalistRef = $this.attr('list'),
+        datalist = $('#' + datalistRef),
+        opts = datalist.find('option'),
+        wrapper = $('<div>').css('position', 'relative');
     
     //return this if matching datalist isn't found
     //to be polite if there's any chaining
     if (!datalist.length) {
         return this;
     } else {
-      var lis = opts.each(function(i, opt) {
+      opts.each(function(i, opt) {
         $('<li>')
           .append('<span class="value">'+opt.value+'</span>')
           .append('<span class="label">'+opt.label+'</span>')
@@ -57,27 +57,23 @@ $.fn.datalist = function(options) {
     
     //stick the stuff in
     $this.wrap(wrapper);
+    
     ul.hide().insertAfter($this);
     
     $this.focus(function(){
-      ul.show();
+      ul.show(); 
     });
     
     $this.blur(function(){
       ul.hide();
     });
     
-    //need to update value
+    var lis = $this.next().find('li');
+    lis.mousedown(function(){
+      var value = $(this).find('span.value').text();
+      $this.val(value); 
+    });
     
-    console.log(ul, datalist, opts);
-    //get reference to matching datalist √
-    //die silently if not found √
-    //create ul
-    //collect all the options, turn 'em into <li>s √
-    //jam that in new ul √
-    //position that guy under the input √
-    //show it on focus, hide on blue √
-    //update value on li click
     //make it modular and prettay
     
   });
