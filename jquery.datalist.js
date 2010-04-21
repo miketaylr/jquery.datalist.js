@@ -21,14 +21,7 @@
 </datalist>
 */
 
-$.fn.datalist = function(options) {
-  //global config opts
-  var defaults = {
-    //magick!
-  };
-  
-  //merge in passed in options, if any
-  var opts = $.extend(defaults, options);
+$.fn.datalist = function() {
   
   //first test for native placeholder support before continuing
   return ((typeof this[0].list === 'object' ) && this[0].list !== undefined) ? this : this.each(function() {
