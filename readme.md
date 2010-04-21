@@ -9,14 +9,12 @@ for a native implementation before building one.
 ## USAGE: 
 `$('input[list]').datalist();`
 
-`
-<input type="search" autofocus list="suggestions">
-<datalist id="suggestions">
-  <select>
-    <option label="DM" value="Depeche Mode"></option>
-    <option label="Moz" value="Morrissey"></option>
-    <option label="NO" value="New Order"></option>
-    <option label="TC" value="The Cure"></option>
-  </select>
-</datalist>
-`
+    <input type="search" autofocus list="suggestions">
+    <datalist id="suggestions">
+        <select>
+        <option label="DM" value="Depeche Mode"></option>
+        <option label="Moz" value="Morrissey"></option>
+        <option label="NO" value="New Order"></option>
+        <option label="TC" value="The Cure"></option>
+      </select>
+    </datalist>
