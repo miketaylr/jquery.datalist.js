@@ -28,11 +28,13 @@ $.fn.datalist = function() {
     
     //local vars
     var $this = $(this),
+        //the main guts of the plugin
+        datalist = $('#' + $this.attr('list')),
+        opts = datalist.find('option'),
+        
+        //wrapper stuffs
         width = $this.width(),
         ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute'}}),
-        datalistRef = $this.attr('list'),
-        datalist = $('#' + datalistRef),
-        opts = datalist.find('option'),
         wrapper = $('<div>').css('position', 'relative');
     
     //return this if matching datalist isn't found
