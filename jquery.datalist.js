@@ -10,7 +10,7 @@
 //$('input[list]').datalist();
 
 /* 
-<input type="search" autofocus list="suggestions">
+<input type="search" list="suggestions">
 <datalist id="suggestions">
   <!--[if !IE]><!-->
   <select><!--<![endif]-->

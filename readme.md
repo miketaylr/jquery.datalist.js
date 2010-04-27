@@ -1,17 +1,17 @@
-# HTML5 datalist plugin v.0.1
+# HTML5 datalist plugin v.0.2
 #### Copyright (c) 2010-The End of Time, Mike Taylor, http://miketaylr.com
 #### MIT Licensed: http://www.opensource.org/licenses/mit-license.php
 
 Enables cross-browser* html5 datalist for inputs, by first testing
 for a native implementation before building one.
 
-*No idea what this looks like in IE6. I don't care either.
+*No idea what this looks like in IE6. Fork it and add support if you care.
 
 
 ## USAGE: 
 `$('input[list]').datalist();`
 
-    <input type="search" autofocus list="suggestions">
+    <input type="search" list="suggestions">
     <datalist id="suggestions">
       <!--[if !IE]><!-->
       <select><!--<![endif]-->
@@ -22,3 +22,7 @@ for a native implementation before building one.
       <!--[if !IE]><!-->
       </select><!--<![endif]-->
     </datalist>
+    
+## Note:
+In your css file, you should add the following:
+    datalist {display:block;}
