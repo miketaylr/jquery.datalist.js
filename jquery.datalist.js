@@ -36,7 +36,21 @@ $.fn.datalist = function() {
         //wrapper stuffs
         width = $this.width(),
         height = $this.height(),
-        ul = $("<ul>", {"class": "datalist", "width": width, "css": {'position': 'absolute', 'left': 0, 'top': height + 6}}),
+        ul = $("<ul>", {"class": "datalist", "width": width, "css": 
+          {'position': 'absolute', 
+           'left': 0, 
+           'top': height + 6, 
+           'margin': 0, 
+           'padding': '0 2px',
+           'list-style': 'none',
+           'border': '1px solid #ccc', 
+           '-moz-box-shadow': '0px 2px 3px #ccc', 
+           '-webkit-box-shadow': '0px 2px 3px #ccc', 
+           'box-shadow': '0px 2px 3px #ccc', 
+           'z-index':99, 
+           'background':'#fff', 
+           'cursor':'default'}
+          }),
         wrapper = $('<div>').css('position', 'relative');
         
     //return this if matching datalist isn't found
@@ -48,7 +62,7 @@ $.fn.datalist = function() {
       opts.each(function(i, opt) {
         $('<li>')
           .append('<span class="value">'+opt.value+'</span>')
-          .append('<span class="label">'+opt.label+'</span>')
+          .append('<span class="label" style="float:right">'+opt.label+'</span>')
           .appendTo(ul);
       });
     };
