@@ -5,7 +5,7 @@
 Enables cross-browser* html5 datalist for inputs, by first testing
 for a native implementation before building one.
 
-*No idea what this looks like in IE6. Fork it and add support if you care.
+*No idea what this looks like in IE6. Fork it and add support!.
 
 
 ## USAGE: 
