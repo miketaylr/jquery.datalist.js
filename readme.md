@@ -6,6 +6,7 @@ Enables cross-browser* html5 datalist for inputs, by first testing
 for a native implementation before building one.
 
 *No idea what this looks like in IE6. Fork it and add support!.
+* Safari 5 lies about their support for datalist, so this is essentially busted. UA sniffing might be the only way around this...
 
 
 ## USAGE: 
