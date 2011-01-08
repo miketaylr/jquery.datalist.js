@@ -26,7 +26,7 @@
 $.fn.datalist = function() {
   
   //first test for native placeholder support before continuing
-  return ((typeof this[0].list === 'object' ) && !!(document.createElement('datalist') && window.HTMLDataListElement)) ? this : this.each(function() {
+  return ((typeof this[0].list === 'object' ) && (document.createElement('datalist') && !!window.HTMLDataListElement)) ? this : this.each(function() {
     //local vars
     var $this = $(this),
         //the main guts of the plugin
